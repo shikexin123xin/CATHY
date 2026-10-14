@@ -1,0 +1,794 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07191c">
+<title>妈祖灵签 · 海上明灯</title>
+<style>
+:root{color-scheme:dark;--bg:#07191c;--panel:#0d2223;--line:#28504a;--muted:#9eb9b1;--text:#f4f0dc;--cyan:#72ddc6;--pink:#f09a7a;--violet:#92c6b4;--gold:#f6d38b}
+*{box-sizing:border-box}
+body{min-width:320px;min-height:100vh;overflow-x:hidden;margin:0;color:var(--text);background:radial-gradient(ellipse at 78% 13%,#cc87534f 0,transparent 19%),radial-gradient(ellipse at 82% 30%,#157c7060 0,transparent 35%),radial-gradient(ellipse at 17% 74%,#103c3e75 0,transparent 42%),linear-gradient(155deg,#07191c,#0a2021 48%,#081618);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+body:before{position:fixed;inset:0;z-index:-1;background:repeating-radial-gradient(ellipse at 78% 29%,transparent 0 43px,#8bd5bf0a 44px 45px,transparent 46px 78px);mask-image:linear-gradient(transparent,#000 12%,#000 85%,transparent);content:""}
+body:after{position:fixed;inset:0;z-index:-1;background-image:radial-gradient(circle,#f4d99455 .7px,transparent 1px),radial-gradient(circle,#a1e4ce31 1px,transparent 1.4px);background-position:0 0,23px 37px;background-size:91px 83px,137px 119px;opacity:.36;content:"";pointer-events:none}
+button,input,textarea{font:inherit}
+button{color:inherit}
+.shell{width:min(1320px,100%);margin:auto;padding:26px 32px 24px}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid #ffffff12}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{display:grid;width:38px;height:38px;place-items:center;border:1px solid #f6d38b77;border-radius:50%;color:var(--gold);background:linear-gradient(145deg,#174943,#0b2728);box-shadow:0 0 24px #73ddc622,inset 0 0 0 3px #f6d38b13;font-size:20px}
+.brand-mark{font-size:15px;font-weight:750;letter-spacing:.08em}
+.brand-name{font-size:13px;font-weight:800;letter-spacing:.17em}
+.brand-sub{margin-top:4px;color:var(--muted);font-size:10px;letter-spacing:.14em}
+.top-meta{display:flex;align-items:center;gap:22px;color:#a9a9bc;font:10px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em}
+.online{display:flex;align-items:center;gap:8px;color:var(--cyan)}
+.online:before{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);content:""}
+.intro{display:flex;align-items:end;justify-content:space-between;gap:20px;padding:34px 0 24px}
+.intro-copy{position:relative;z-index:1}
+.hero-art{position:absolute;top:-8px;right:7%;width:clamp(160px,24vw,290px);height:225px;opacity:.78;pointer-events:none}
+.eyebrow{color:var(--gold);font:10px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.2em}
+h1{margin:8px 0 0;font-size:clamp(30px,4vw,48px);font-weight:750;letter-spacing:.06em}
+h1 span{color:var(--gold);text-shadow:0 0 24px #ffd27b5c}
+.subtitle{margin:10px 0 0;color:#a4a2b8;font-size:13px;line-height:1.7}
+.daily{padding:11px 15px;border:1px solid #ffffff12;border-radius:12px;color:#aaa8bd;background:#ffffff04;font:10px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em;text-align:right;white-space:nowrap}
+.daily strong{display:block;color:var(--gold);font-size:13px;font-weight:600}
+.layout{display:grid;grid-template-columns:268px minmax(0,1fr) 250px;gap:14px;align-items:stretch}
+.panel{min-width:0;border:1px solid var(--line);border-radius:17px;background:linear-gradient(155deg,#10292af2,#0b1e20f5);box-shadow:0 20px 55px #020d0f70}
+.controls,.side{padding:21px}
+.panel-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:19px}
+.panel-title{font-size:13px;font-weight:700;letter-spacing:.04em}
+.mini-code{color:#75778e;font:9px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em}
+.field-label{display:flex;justify-content:space-between;margin-bottom:9px;color:#c7c4d5;font-size:11px}
+.optional{color:#797b90;font-size:10px}
+textarea{display:block;width:100%;min-height:91px;resize:vertical;padding:12px;border:1px solid #7bd3bd2c;border-radius:10px;outline:none;color:var(--text);background:#071719;font-size:12px;line-height:1.7;transition:border-color .2s,box-shadow .2s}
+textarea::placeholder{color:#66697c}
+textarea:focus{border-color:#72ddc6a0;box-shadow:0 0 0 3px #72ddc61b}
+.hint{margin:7px 0 22px;color:#73768b;font-size:10px;line-height:1.6}
+.mode-label{margin:0 0 10px;color:#c7c4d5;font-size:11px}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mode{padding:11px 8px;border:1px solid #ffffff14;border-radius:10px;color:#a5a4b7;background:#0d0e17;cursor:pointer;transition:.2s}
+.mode:hover{border-color:#ffffff3b}
+.mode[aria-pressed="true"]{border-color:#f6d38b8c;color:var(--gold);background:#f6d38b12;box-shadow:inset 0 0 18px #f6d38b0a}
+.mode strong{display:block;font-size:12px}
+.mode small{display:block;margin-top:5px;color:#777a90;font-size:9px}
+.draw-button{position:relative;display:flex;width:100%;min-height:50px;align-items:center;justify-content:center;gap:9px;margin-top:18px;overflow:hidden;border:1px solid #f6d38b99;border-radius:10px;color:#102523;background:linear-gradient(110deg,#f5d994,#a9e4ca);box-shadow:0 7px 26px #72ddc624;font-size:13px;font-weight:800;letter-spacing:.08em;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.draw-button:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 30px #72ddc648}
+.draw-button:active:not(:disabled){transform:translateY(0)}
+.draw-button:disabled{opacity:.7;cursor:wait}
+.draw-button:focus-visible,.mode:focus-visible,.icon-button:focus-visible,.clear-button:focus-visible,.gesture-button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.draw-icon{font-size:16px}
+.small-actions{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+.gesture-box{margin-top:18px;padding:12px;border:1px solid #76d2be2c;border-radius:11px;background:linear-gradient(145deg,#0c2021,#0a191b)}
+.gesture-heading{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.gesture-title{color:#d3d0e0;font-size:11px;font-weight:650}
+.gesture-status{color:#7b7d91;font-size:9px}
+.gesture-status[data-state="active"]{color:var(--cyan)}
+.gesture-status[data-state="error"]{color:#ff829a}
+.gesture-help{margin:7px 0 10px;color:#838599;font-size:9px;line-height:1.7}
+.gesture-actions{display:flex;gap:7px}
+.gesture-button{flex:1;min-height:34px;padding:7px 8px;border:1px solid #ffd27b58;border-radius:8px;color:var(--gold);background:#ffd27b0b;font-size:10px;cursor:pointer;transition:background .2s,border-color .2s}
+.gesture-button:hover:not(:disabled){border-color:#ffd27b99;background:#ffd27b1a}
+.gesture-button:disabled{opacity:.55;cursor:wait}
+.gesture-button.secondary{border-color:#ffffff18;color:#aaa8bd;background:#ffffff04}
+.gesture-camera{position:absolute;top:53px;right:18px;z-index:4;display:none;width:min(40%,300px);aspect-ratio:4/3;overflow:hidden;border:1px solid #f6d38ba6;border-radius:12px;background:#061416;box-shadow:0 12px 36px #0009,0 0 24px #72ddc624}
+.gesture-camera.visible{display:block}
+.gesture-camera video,.gesture-camera canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+.gesture-camera-label{position:absolute;right:8px;bottom:8px;padding:6px 9px;border:1px solid #ffd27b55;border-radius:6px;color:var(--gold);background:#12090ae8;font:9px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em}
+.gesture-camera-caption{position:absolute;top:8px;left:9px;padding:5px 7px;border:1px solid #ffffff30;border-radius:6px;color:#fff5df;background:#12090ae8;font-size:9px}
+.gesture-meter{height:3px;margin-top:9px;overflow:hidden;border-radius:4px;background:#ffffff12}
+.gesture-meter-fill{width:0;height:100%;border-radius:4px;background:var(--cyan);box-shadow:0 0 9px var(--cyan)}
+.gesture-meter-fill.armed{transition:width .08s linear}
+.sound-toggle,.clear-button{padding:5px 0;border:0;color:#85879b;background:none;font-size:10px;cursor:pointer}
+.sound-toggle:disabled,.clear-button:disabled,.mode:disabled{opacity:.55;cursor:wait}
+.sound-toggle:hover,.clear-button:hover{color:var(--cyan)}
+.sound-toggle[aria-pressed="true"]{color:var(--cyan)}
+.center{position:relative;display:flex;min-height:455px;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding:24px;background:radial-gradient(ellipse at 74% 34%,#1d817236,transparent 45%),linear-gradient(145deg,#0d2929,#091c1f 75%)}
+.center:before,.center:after{position:absolute;width:250px;height:250px;border:1px solid #72ddc615;border-radius:50%;content:"";pointer-events:none}
+.center:after{width:350px;height:350px}
+.scene-art{position:absolute;inset:0;z-index:0;width:100%;height:100%;opacity:.88;pointer-events:none}
+.scene-swell{animation:swell 16s ease-in-out infinite alternate}
+.center-head{z-index:1}
+.orb-wrap,.stage-title,.stage-copy,.stage-hint,.results{position:relative;z-index:1}
+.center-head{position:absolute;top:21px;left:23px;right:23px;display:flex;justify-content:space-between;color:#87869f;font:9px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em}
+.orb-wrap{position:relative;display:grid;width:218px;height:218px;place-items:center;margin:22px 0 17px}
+.orbit{position:absolute;inset:5px;border:1px solid #f6d38b66;border-radius:50%;box-shadow:0 0 26px #f6d38b1a,inset 0 0 25px #72ddc610;animation:orbit 18s linear infinite}
+.orbit:before,.orbit:after{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 13px var(--gold);content:""}
+.orbit:before{top:29px;left:28px}
+.orbit:after{right:17px;bottom:53px;width:5px;height:5px;background:var(--pink);box-shadow:0 0 13px var(--pink)}
+.orbit-two{inset:22px;border-color:#65f5e229;transform:rotate(62deg);animation-direction:reverse;animation-duration:24s}
+.orbit-three{inset:38px;border-style:dashed;border-color:#ff66b326;animation-duration:33s}
+.core{position:relative;display:grid;width:104px;height:104px;place-items:center;border:1px solid #f6d38bc9;border-radius:32px;color:#fff3d6;background:linear-gradient(145deg,#22665c,#123834 72%);box-shadow:0 0 50px #72ddc640,inset 0 0 28px #f6d38b2c;transform:rotate(45deg)}
+.core:before{position:absolute;inset:8px;border:1px solid #f6d38b70;border-radius:25px;content:""}
+.core-symbol{font-size:46px;line-height:1;text-shadow:0 0 26px #f6d38bc9;transform:rotate(-45deg)}
+.center.camera-on .orb-wrap{width:168px;height:168px;margin:23px 0 14px;transform:translateX(-78px)}
+.center.camera-on .orbit-three{inset:30px}
+.center.is-drawing .orb-wrap{animation:charge .7s ease-in-out infinite alternate}
+.center.is-drawing .core{border-color:var(--gold);box-shadow:0 0 75px #f6d38ba0,inset 0 0 35px #72ddc655}
+.center.is-drawing .orbit{border-color:#f6d38bcc;animation-duration:1.2s}
+.stage-title{margin:0;color:#e6e1f5;font-size:14px;font-weight:650;letter-spacing:.1em}
+.stage-copy{max-width:360px;margin:9px 0 0;color:#88889e;font-size:11px;line-height:1.8;text-align:center}
+.stage-hint{margin-top:23px;color:#72758c;font:9px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.15em}
+.results{display:none;width:100%;max-width:610px;margin:27px auto 0}
+.results.visible{display:block;animation:fade-up .4s ease both}
+.result-caption{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px;color:#aaa8bf;font:9px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.11em}
+.result-caption strong{color:var(--cyan);font-weight:500}
+.cards{display:grid;grid-template-columns:1fr;gap:10px}
+.cards.multi{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fortune-card{position:relative;min-width:0;overflow:hidden;padding:14px;border:1px solid #d5bb826b;border-radius:13px;color:#514438;background:linear-gradient(145deg,#f4e8c9,#e9d6aa 58%,#f3e8cd);box-shadow:inset 0 0 0 3px #fff7df50,0 8px 20px #020b0b55;animation:fade-up .45s ease both}
+.fortune-card:before{position:absolute;top:0;right:0;left:0;height:2px;background:linear-gradient(90deg,transparent,var(--card-accent),transparent);content:""}
+.fortune-card:after{position:absolute;top:9px;right:9px;width:19px;height:19px;border-top:1px solid #9e805466;border-right:1px solid #9e805466;content:""}
+.fortune-card[data-grade="大吉"]{--card-accent:#9d4936;border-color:#d3945680;background:linear-gradient(145deg,#fff0c9,#f1d698 58%,#f8e8be)}
+.fortune-card[data-grade="中吉"]{--card-accent:#47786b;border-color:#82a38b;background:linear-gradient(145deg,#f1ead0,#e1dfbc 62%,#efe6c9)}
+.fortune-card[data-grade="小吉"]{--card-accent:#a25847;border-color:#cb9980;background:linear-gradient(145deg,#f5e5d0,#e9d5bb 62%,#f3e2ca)}
+.fortune-card[data-grade="平签"]{--card-accent:#466b69;border-color:#8da89b;background:linear-gradient(145deg,#e7ebd8,#d8e2d0 62%,#e8eadb)}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:5px;color:#766a5b;font:8px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.09em}
+.rarity{color:var(--card-accent)}
+.card-sigil{display:grid;width:42px;height:42px;place-items:center;margin:13px auto 9px;border:1px solid color-mix(in srgb,var(--card-accent),transparent 65%);border-radius:13px;color:var(--card-accent);background:color-mix(in srgb,var(--card-accent),transparent 92%);font-size:23px;text-shadow:0 0 18px var(--card-accent)}
+.card-name{margin:0;color:#3d3228;font-size:14px;text-align:center}
+.card-message{min-height:37px;margin:8px 0 0;color:#5a5044;font-size:10px;line-height:1.8;text-align:center}
+.card-advice{margin-top:10px;padding-top:9px;border-top:1px solid #68553b25;color:#766755;font-size:9px;line-height:1.7}
+.card-advice b{color:var(--card-accent);font-weight:600}
+.results-question{margin:12px 0 0;color:#88869b;font-size:10px;text-align:center}
+.results-question strong{color:#d2cee0;font-weight:500}
+.side{display:flex;flex-direction:column}
+.side .panel-heading{margin-bottom:13px}
+.count-pill{padding:4px 8px;border:1px solid #65f5e22a;border-radius:20px;color:var(--cyan);background:#65f5e20a;font:9px ui-monospace,SFMono-Regular,Consolas,monospace}
+.history-list{display:flex;flex-direction:column;gap:9px}
+.history-empty{display:grid;min-height:116px;place-items:center;padding:18px;border:1px dashed #ffffff15;border-radius:11px;color:#77798e;font-size:10px;line-height:1.8;text-align:center}
+.history-item{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid #ffffff0e;border-radius:10px;background:#ffffff03}
+.history-sigil{display:grid;width:33px;height:33px;flex:none;place-items:center;border:1px solid #ffd27b38;border-radius:9px;color:#ffd27b;background:#ffd27b0c;font-size:16px}
+.history-copy{min-width:0;flex:1}
+.history-name{overflow:hidden;color:#e5e0f2;font-size:10px;text-overflow:ellipsis;white-space:nowrap}
+.history-meta{margin-top:5px;color:#7f8194;font:8px ui-monospace,SFMono-Regular,Consolas,monospace}
+.divider{height:1px;margin:17px 0;border:0;background:#ffffff10}
+.stats-label{display:flex;justify-content:space-between;color:#9291a6;font-size:10px}
+.stats-label strong{color:var(--gold);font-weight:600}
+.meter{height:4px;margin:10px 0 8px;overflow:hidden;border-radius:8px;background:#ffffff12}
+.meter-fill{width:0;height:100%;border-radius:8px;background:linear-gradient(90deg,#b75946,var(--gold));box-shadow:0 0 12px #ffd27b66;transition:width .5s ease}
+.stats-foot{color:#75778c;font-size:9px;line-height:1.7}
+.side-note{margin-top:auto;padding-top:20px;color:#717387;font-size:9px;line-height:1.8}
+.bottomline{display:flex;justify-content:space-between;gap:12px;padding-top:18px;color:#696c80;font:9px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.08em}
+.bottomline span:last-child{text-align:right}
+@keyframes orbit{to{transform:rotate(360deg)}}
+@keyframes swell{to{transform:translateX(8px)}}
+@keyframes charge{to{transform:scale(1.06)}}
+@keyframes fade-up{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1050px){.layout{grid-template-columns:245px minmax(0,1fr)}.side{grid-column:1/-1;min-height:0}.history-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.history-empty{min-height:60px}.side-note{margin-top:15px;padding-top:0}}
+@media(max-width:650px){.shell{padding:16px 14px 22px}.topbar{padding-bottom:15px}.top-meta{gap:10px;font-size:8px}.brand{gap:9px}.brand-mark{width:34px;height:34px}.brand-name{font-size:11px}.brand-sub{font-size:8px}.intro{min-height:205px;padding:23px 0 19px}.intro-copy{max-width:90%}.hero-art{top:9px;right:0;width:150px;height:175px;opacity:.42}.daily{position:absolute;right:0;bottom:4px;min-width:0;padding:7px 10px;font-size:8px}.daily strong{font-size:10px}.subtitle{max-width:84%;font-size:12px}.layout{grid-template-columns:1fr;gap:13px}.center{order:1;min-height:390px}.controls{order:2}.side{grid-column:auto;order:3}.controls,.side{padding:19px}.gesture-camera{top:50px;right:12px;width:min(52%,230px)}.center.camera-on .orb-wrap{width:142px;height:142px;margin:22px 0 14px;transform:translateX(-60px)}.history-list{grid-template-columns:1fr 1fr}.history-empty{grid-column:1/-1}.bottomline{font-size:8px;line-height:1.7}}
+@media(max-width:390px){.top-meta span:last-child{display:none}.cards.multi{grid-template-columns:1fr}.fortune-card{padding:12px}.card-sigil{margin:9px auto 7px}.card-message{min-height:0}.center{min-height:390px}.bottomline{flex-direction:column}.bottomline span:last-child{text-align:left}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* Fine-grained finish: lacquer, jade light, and warm paper. */
+:root{--gold:#e8c987;--cyan:#8bd6c0;--text:#f5efdf;--muted:#9cb3aa;--line:#28504a}
+body{background:radial-gradient(ellipse at 78% 16%,#d69a5c20 0,transparent 21%),radial-gradient(ellipse at 80% 38%,#31a58a1c 0,transparent 34%),radial-gradient(ellipse at 18% 76%,#24786c20 0,transparent 42%),linear-gradient(155deg,#07181b,#0a2021 50%,#081719)}
+body:before{background:repeating-radial-gradient(ellipse at 80% 34%,transparent 0 55px,#8bd5bf08 56px 57px,transparent 58px 92px)}
+body:after{opacity:.2}
+.shell{width:min(1240px,100%);padding-right:clamp(18px,4vw,48px);padding-left:clamp(18px,4vw,48px)}
+.topbar{padding-bottom:17px;border-bottom-color:#d7bd7c20}
+.brand-mark{position:relative;border-color:#e8c9877d;background:linear-gradient(145deg,#175048,#0c292b);box-shadow:0 0 0 4px #e8c9870a,0 0 28px #62cbb526,inset 0 0 0 3px #f6d38b13}
+.brand-name{font-size:14px;letter-spacing:.2em}
+.top-meta{color:#91aaa4}
+.online:before{box-shadow:0 0 12px var(--cyan)}
+.intro{position:relative;min-height:232px;align-items:center;padding:36px 0 30px}
+.intro-copy{max-width:670px}
+.eyebrow{font-size:9px;letter-spacing:.24em}
+h1{font-family:"Songti SC","STSong","Noto Serif CJK SC",serif;font-size:clamp(39px,5vw,59px);font-weight:600;letter-spacing:.12em}
+h1 span{background:linear-gradient(110deg,#f7e6b4,#dcb96e);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none}
+.subtitle{max-width:490px;color:#afc2b9;font-size:13px;letter-spacing:.025em}
+.hero-art{top:4px;right:clamp(130px,19vw,250px);width:clamp(190px,24vw,285px);height:220px;opacity:.9}
+.daily{position:relative;z-index:2;display:block;min-width:157px;padding:12px 15px;border-color:#dfc27d35;border-radius:12px;color:#afc0b4;background:linear-gradient(145deg,#15302dba,#0b201fe8);box-shadow:inset 0 1px #ffffff0a,0 10px 30px #020d0e3b;font:9px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em;text-align:center;cursor:pointer;transition:border-color .25s,background .25s,box-shadow .25s,transform .25s}
+.daily:hover{transform:translateY(-2px);border-color:#e8c98780}
+.daily strong{margin-top:2px;color:var(--gold);font-family:"Songti SC","STSong",serif;font-size:12px;letter-spacing:.06em}
+.daily[aria-pressed="true"]{border-color:#ebcc83a8;background:linear-gradient(145deg,#29433a,#15312d);box-shadow:0 0 32px #dfb76625,inset 0 0 24px #f1d28b0c}
+.layout{grid-template-columns:minmax(245px,280px) minmax(0,1fr) minmax(220px,245px);gap:17px}
+.panel{border-color:#b3d2b51c;border-radius:19px;background:linear-gradient(145deg,#102827ed,#0b1c1ef5);box-shadow:0 24px 65px #020b0d52,inset 0 1px #ffffff08}
+.controls,.side{padding:23px}
+.panel-heading{margin-bottom:23px}
+.panel-title{font-family:"Songti SC","STSong",serif;font-size:15px;letter-spacing:.1em}
+.mini-code{color:#78938a;letter-spacing:.14em}
+.field-label,.mode-label{color:#d8d7c8}
+textarea{min-height:98px;border-color:#97c8b027;border-radius:12px;background:linear-gradient(145deg,#08191a,#0b2020);font-size:12px}
+textarea:focus{border-color:#c4a766;box-shadow:0 0 0 3px #e8c98712,0 0 22px #58b9a20d}
+textarea::placeholder{color:#72867e}
+.hint{margin:9px 0 24px;color:#8da49a}
+.mode{min-height:69px;border-color:#ffffff18;border-radius:11px;background:linear-gradient(145deg,#102323,#0c1a1c)}
+.mode:hover{border-color:#8bd6c04d;background:#14302c}
+.mode[aria-pressed="true"]{border-color:#e8c98791;color:#f1d89e;background:linear-gradient(145deg,#373522,#1b2923);box-shadow:inset 0 1px #fff4d018,0 4px 18px #e8c9870d}
+.mode strong{font-family:"Songti SC","STSong",serif;font-size:13px;letter-spacing:.08em}
+.mode small{color:#9bada4}
+.gesture-box{margin-top:20px;padding:14px;border-color:#79c8b524;border-radius:13px;background:linear-gradient(145deg,#102827,#0b1c1d)}
+.gesture-title{font-family:"Songti SC","STSong",serif;font-size:12px;letter-spacing:.08em}
+.gesture-help{color:#91a89f;font-size:10px;line-height:1.8}
+.gesture-button{min-height:38px;border-color:#d8bd794a;border-radius:9px;color:#ead49c;background:#d8bd7908}
+.gesture-button:hover:not(:disabled){border-color:#e8c9879c;background:#e8c98713}
+.gesture-camera{border-radius:14px}
+.gesture-camera-label,.gesture-camera-caption{border-color:#e8c98763;background:#071719e8}
+.gesture-meter{height:4px;background:#ffffff10}
+.gesture-meter-fill{background:linear-gradient(90deg,#83d3b7,#f2d18b);box-shadow:0 0 12px #83d3b766}
+.draw-button{min-height:54px;margin-top:20px;border-radius:12px;background:linear-gradient(110deg,#e9ca88,#f0ddb1 54%,#b9ddc8);box-shadow:0 8px 24px #d7b66c1c,inset 0 1px #fff8de}
+.draw-button:hover:not(:disabled){box-shadow:0 12px 32px #d7b66c35,inset 0 1px #fff8de}
+.draw-icon{font-size:18px}
+.small-actions{margin-top:16px}
+.sound-toggle,.clear-button{color:#9aafa5}
+.sound-toggle:hover,.clear-button:hover{color:var(--gold)}
+.center{min-height:520px;border-color:#bbd5af25;background:radial-gradient(ellipse at 72% 28%,#d6a66513,transparent 32%),radial-gradient(ellipse at 50% 43%,#2c8e7830,transparent 47%),linear-gradient(155deg,#102a29,#081a1c 80%);transition:box-shadow .4s,border-color .4s}
+.center:before,.center:after{display:none}
+.center.lantern-lit{border-color:#e8c9877a;box-shadow:0 0 50px #ddbd6930,0 24px 65px #020b0d52,inset 0 1px #fff8dd1a}
+.scene-art{opacity:.69;transition:opacity .5s,filter .5s}
+.center.lantern-lit .scene-art{opacity:1;filter:brightness(1.35)}
+.center-head{top:22px;left:24px;right:24px;color:#91aaa0;font-size:9px}
+.center-head span:first-child{letter-spacing:.18em}
+.center-head span:last-child{color:#d3bc80}
+.orb-wrap{width:196px;height:196px;margin:27px 0 21px}
+.orbit{border-color:#e8c98769;box-shadow:0 0 34px #e8c98713,inset 0 0 28px #72ddc610}
+.orbit-two{border-color:#87c8ae35}
+.orbit-three{display:none}
+.core{width:96px;height:96px;border-radius:29px;background:linear-gradient(145deg,#276b5f,#143b38 72%);box-shadow:0 0 54px #72ddc632,inset 0 0 30px #f6d38b22}
+.core:before{inset:7px;border-radius:23px}
+.core-symbol{font-family:"Songti SC","STSong",serif;font-size:43px}
+.center.camera-on .orb-wrap{width:154px;height:154px;margin:24px 0 16px;transform:translateX(-85px)}
+.center.camera-on .core{width:82px;height:82px}
+.center.is-drawing .orb-wrap{animation:charge .65s ease-in-out infinite alternate}
+.stage-title{font-family:"Songti SC","STSong",serif;font-size:17px;font-weight:650;letter-spacing:.16em;text-shadow:0 1px 16px #e8c98718}
+.stage-copy{color:#b1c2b7;font-size:12px;line-height:1.9}
+.stage-hint{margin-top:19px;color:#d0b97d;font-size:9px;letter-spacing:.2em}
+.results{max-width:690px;margin-top:28px}
+.result-caption{margin-bottom:14px;color:#b6c1b3}
+.result-caption strong{color:#ebd394}
+.cards{gap:12px}
+.cards.multi{gap:10px}
+.fortune-card{min-height:204px;padding:16px 15px;border-radius:15px;background-image:radial-gradient(circle at 15% 20%,#b5996720 .65px,transparent .9px),radial-gradient(circle at 80% 70%,#8f75451a .55px,transparent .8px),linear-gradient(145deg,#f6ebd0,#eadbb7 58%,#f5e9cc);background-size:11px 13px,9px 12px,auto;box-shadow:inset 0 0 0 1px #fff9e8a3,inset 0 0 0 5px #e0c99830,0 12px 26px #020c0d55;transition:transform .25s,box-shadow .25s}
+.fortune-card:hover{transform:translateY(-4px);box-shadow:inset 0 0 0 1px #fff9e8a3,inset 0 0 0 5px #e0c99830,0 18px 32px #020c0d75}
+.fortune-card:before{top:6px;right:14px;left:14px;height:1px}
+.fortune-card:after{top:12px;right:12px;width:17px;height:17px;border-color:#927b4d70}
+.fortune-card[data-grade="大吉"]{background-image:radial-gradient(circle at 15% 20%,#b5996720 .65px,transparent .9px),radial-gradient(circle at 80% 70%,#8f75451a .55px,transparent .8px),linear-gradient(145deg,#fff3d7,#f1dca9 58%,#f8ebca)}
+.fortune-card[data-grade="中吉"]{background-image:radial-gradient(circle at 15% 20%,#b5996720 .65px,transparent .9px),radial-gradient(circle at 80% 70%,#8f75451a .55px,transparent .8px),linear-gradient(145deg,#f1edd7,#dfe5ca 62%,#f0e8cb)}
+.fortune-card[data-grade="小吉"]{background-image:radial-gradient(circle at 15% 20%,#b5996720 .65px,transparent .9px),radial-gradient(circle at 80% 70%,#8f75451a .55px,transparent .8px),linear-gradient(145deg,#f8e9d6,#ead7c2 62%,#f6e7d0)}
+.fortune-card[data-grade="平签"]{background-image:radial-gradient(circle at 15% 20%,#b5996720 .65px,transparent .9px),radial-gradient(circle at 80% 70%,#8f75451a .55px,transparent .8px),linear-gradient(145deg,#edf0df,#dce5d8 62%,#eff0df)}
+.card-top{min-height:22px;color:#786c59;font-size:8px}
+.rarity{padding:3px 7px;border:1px solid color-mix(in srgb,var(--card-accent),transparent 52%);border-radius:20px;background:color-mix(in srgb,var(--card-accent),transparent 93%);font-size:9px}
+.card-sigil{width:46px;height:46px;margin:15px auto 11px;border-radius:50%;background:color-mix(in srgb,var(--card-accent),transparent 94%);box-shadow:inset 0 0 0 3px #fff9e65c}
+.card-name{font-family:"Songti SC","STSong",serif;font-size:17px;letter-spacing:.14em}
+.card-message{min-height:45px;margin-top:10px;font-family:"Songti SC","STSong",serif;font-size:11px;line-height:1.9}
+.card-advice{margin-top:12px;padding-top:10px;text-align:center}
+.card-advice b{letter-spacing:.04em}
+.results-question{color:#aebdb2;line-height:1.8}
+.results-question strong{color:#ead59b}
+.side{background:linear-gradient(155deg,#102725f5,#0b1b1df7)}
+.side .panel-heading{margin-bottom:18px}
+.count-pill{border-color:#e8c98743;color:#e8c987;background:#e8c9870b}
+.history-empty{border-color:#9cc5b022;color:#9db2a8;background:linear-gradient(145deg,#ffffff03,#8bd6c005)}
+.history-item{border-color:#c5e0c510;background:linear-gradient(105deg,#ffffff05,#ffffff01);transition:transform .2s,border-color .2s}
+.history-item:hover{transform:translateX(2px);border-color:#e8c98738}
+.history-sigil{border-color:#e8c9874d;color:#f0d89b;background:linear-gradient(145deg,#e8c98714,#78d2bb0b)}
+.history-name{color:#e7e6d7}
+.history-meta{color:#91a89d}
+.divider{background:#d8c17b1c}
+.stats-label{color:#b4c1b5}
+.stats-foot,.side-note{color:#8fa59a;line-height:1.8}
+.meter{background:#ffffff14}
+.meter-fill{background:linear-gradient(90deg,#6ac2a5,#edcf85);box-shadow:0 0 14px #82d2b442}
+.bottomline{padding-top:22px;color:#819a90}
+.bottomline span:last-child{color:#758b82}
+@media(max-width:1050px){.layout{grid-template-columns:245px minmax(0,1fr)}.side{grid-column:1/-1}.hero-art{right:20%}.center{min-height:500px}}
+@media(max-width:650px){.shell{padding:16px 14px 22px}.intro{min-height:205px;padding:23px 0 19px}.intro-copy{max-width:90%}.hero-art{top:9px;right:0;width:150px;height:175px;opacity:.42}h1{letter-spacing:.08em}.layout{grid-template-columns:1fr;gap:13px}.center{order:1;min-height:390px}.controls{order:2}.side{grid-column:auto;order:3}.controls,.side{padding:19px}.daily{position:absolute;right:0;bottom:4px;min-width:0;padding:7px 10px;font-size:8px}.daily strong{font-size:10px}.fortune-card{min-height:0}.cards.multi{gap:9px}.center.camera-on .orb-wrap{width:142px;height:142px;margin:22px 0 14px;transform:translateX(-60px)}.center-head{left:18px;right:18px}.gesture-camera{top:51px;right:10px;width:min(52%,230px)}}
+@media(max-width:390px){.fortune-card{padding:12px 11px}.card-message{min-height:0;font-size:10px}.card-sigil{width:40px;height:40px;margin:11px auto 8px}.card-name{font-size:15px}.daily{right:0;bottom:3px}}
+.lantern-control{display:flex;flex-direction:column;align-items:center;gap:3px;width:100%;padding:0;border:0;color:inherit;background:none;font:inherit;letter-spacing:inherit;cursor:pointer}
+.lantern-control:focus-visible{outline:2px solid var(--gold);outline-offset:5px;border-radius:5px}
+.lantern-control strong{transition:color .25s,text-shadow .25s}
+.daily[aria-pressed="true"] .lantern-control strong{color:#fff0c2;text-shadow:0 0 16px #f2d28b88}
+</style>
+</head>
+<body>
+<main class="shell">
+  <header class="topbar">
+    <div class="brand">
+        <div class="brand-mark" aria-hidden="true">灯</div>
+        <div><div class="brand-name">海上明灯</div><div class="brand-sub">MAZU · CYBER ORACLE</div></div>
+    </div>
+      <div class="top-meta"><span class="online">祈愿已连线</span><span>妈祖文化灵感 · 数字互动</span></div>
+  </header>
+  <section class="intro" aria-labelledby="page-title">
+    <div class="intro-copy">
+      <div class="eyebrow">✧ &nbsp; 海上明灯 · 平安相随</div>
+      <h1 id="page-title">妈祖<span>灵签</span></h1>
+      <p class="subtitle">以妈祖信仰中护佑平安、慈悲济世的意象为灵感，求一支数字签。</p>
+    </div>
+    <button class="daily" id="lantern-toggle" type="button" aria-pressed="false" aria-label="点亮祈愿心灯">
+      <span class="lantern-control"><span id="lantern-state">点亮心灯 · TOUCH TO GLOW</span><strong>敬天惜福 · 心诚自省</strong></span>
+    </button>
+    <svg class="hero-art" viewBox="0 0 260 220" aria-hidden="true">
+      <defs>
+        <radialGradient id="hero-lantern"><stop stop-color="#f6d994" stop-opacity=".45"/><stop offset="1" stop-color="#f6d994" stop-opacity="0"/></radialGradient>
+        <linearGradient id="hero-beam"><stop stop-color="#f6d994" stop-opacity=".26"/><stop offset="1" stop-color="#f6d994" stop-opacity="0"/></linearGradient>
+      </defs>
+      <circle cx="156" cy="98" r="92" fill="url(#hero-lantern)"/>
+      <path d="M144 78 89 58q35 5 59 17Z" fill="url(#hero-beam)"/>
+      <circle cx="153" cy="104" r="64" fill="none" stroke="#f6d994" stroke-opacity=".38"/>
+      <circle cx="153" cy="104" r="73" fill="none" stroke="#79d9c2" stroke-opacity=".25" stroke-dasharray="2 7"/>
+      <path d="m142 84 6-12h13l6 12zm-2 4h31v8h-31zm3 9h25l10 68h-45zm-13 78h51m-57 7h63" fill="none" stroke="#f6d994" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M149 101h18v18h-18z" fill="#f6d994" fill-opacity=".24" stroke="#f6d994" stroke-width="1"/>
+      <path d="M0 177q34-12 68 0t68 0 68 0 68 0M-10 193q40-11 80 0t80 0 80 0 80 0M13 207q27-8 54 0t54 0 54 0 54 0" fill="none" stroke="#79d9c2" stroke-opacity=".39"/>
+      <circle cx="61" cy="107" r="2" fill="#f6d994"/><circle cx="201" cy="55" r="1.5" fill="#f6d994"/>
+    </svg>
+  </section>
+  <section class="layout" aria-label="妈祖主题互动灵签">
+    <aside class="panel controls" aria-labelledby="controls-title">
+      <div class="panel-heading"><h2 class="panel-title" id="controls-title">写下心愿</h2><span class="mini-code">祈愿 · 01</span></div>
+      <label class="field-label" for="question">此刻想祈愿什么？<span class="optional">选填</span></label>
+      <textarea id="question" maxlength="80" placeholder="愿家人平安，愿前路有光……"></textarea>
+      <p class="hint">静心片刻，说出愿望。签文是游戏灵感，不替你做决定。</p>
+      <p class="mode-label">选择抽签模式</p>
+      <div class="modes" role="group" aria-label="抽签模式">
+        <button class="mode" type="button" data-count="1" aria-pressed="true"><strong>求一签</strong><small>静心听签</small></button>
+        <button class="mode" type="button" data-count="3" aria-pressed="false"><strong>三时签</strong><small>前缘 · 此刻 · 祈愿</small></button>
+      </div>
+      <div class="gesture-box">
+        <div class="gesture-heading"><span class="gesture-title">隔空拈签</span><span class="gesture-status" id="gesture-status" data-state="idle">未连接</span></div>
+        <p class="gesture-help">开启摄像头后，主画面会显示你的实时手势。张开手掌保持片刻，即可求签。</p>
+        <div class="gesture-actions">
+          <button class="gesture-button" id="gesture-start" type="button">开启摄像头与手势</button>
+          <button class="gesture-button secondary" id="gesture-stop" type="button" hidden>关闭摄像头</button>
+        </div>
+        <div class="gesture-meter" aria-hidden="true"><div class="gesture-meter-fill" id="gesture-meter"></div></div>
+      </div>
+      <button class="draw-button" id="draw" type="button"><span class="draw-icon" aria-hidden="true">✦</span><span>摇一支灵签</span></button>
+      <div class="small-actions">
+        <button class="sound-toggle" id="sound" type="button" aria-pressed="false">♫ 音效：关</button>
+        <button class="clear-button" id="reset" type="button">重新洗牌 ↺</button>
+      </div>
+    </aside>
+    <section class="panel center" id="stage" aria-live="polite" aria-label="灵签与实时手势画面">
+      <div class="center-head"><span>海上明灯 · 灵签台</span><span id="deck-status">签筒 12 / 12</span></div>
+      <svg class="scene-art" viewBox="0 0 900 540" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <radialGradient id="lantern-glow"><stop stop-color="#f7d999" stop-opacity=".8"/><stop offset=".28" stop-color="#edb975" stop-opacity=".22"/><stop offset="1" stop-color="#edb975" stop-opacity="0"/></radialGradient>
+          <linearGradient id="beacon-beam"><stop stop-color="#f7d999" stop-opacity=".3"/><stop offset="1" stop-color="#f7d999" stop-opacity="0"/></linearGradient>
+          <linearGradient id="tower-stone" x2="0" y2="1"><stop stop-color="#f6d99e"/><stop offset="1" stop-color="#bd9060"/></linearGradient>
+          <linearGradient id="sea-ink" x2="0" y2="1"><stop stop-color="#39877a" stop-opacity=".2"/><stop offset="1" stop-color="#07191c" stop-opacity=".05"/></linearGradient>
+        </defs>
+        <circle cx="688" cy="220" r="178" fill="url(#lantern-glow)"/>
+        <path d="M678 208 594 194Q641 196 681 215Z" fill="url(#beacon-beam)" opacity=".22"/>
+        <path d="M682 220 621 242Q652 232 685 228Z" fill="url(#beacon-beam)" opacity=".15"/>
+        <path d="M0 346Q98 312 184 341T368 338Q482 310 557 337T740 325Q826 307 900 337V540H0Z" fill="url(#sea-ink)"/>
+        <path d="M0 365Q102 335 199 361T394 358Q495 336 589 359T776 350Q848 338 900 355" fill="none" stroke="#83d8be" stroke-opacity=".25"/>
+        <g class="scene-swell" fill="none" stroke="#83d8be" stroke-opacity=".3">
+          <path d="M-40 391q82-23 164 0t164 0 164 0 164 0 164 0 164 0"/>
+          <path d="M-60 425q92-22 184 0t184 0 184 0 184 0 184 0"/>
+          <path d="M-20 464q72-18 144 0t144 0 144 0 144 0 144 0 144 0"/>
+          <path d="M56 498q52-13 104 0t104 0 104 0 104 0 104 0 104 0"/>
+        </g>
+        <g fill="none" stroke="#e5c681" stroke-opacity=".22">
+          <path d="M692 205V168"/><path d="M674 168h36l-5-13h-26z"/><path d="M671 156h42l-6-9h-30z"/>
+          <path d="M677 169h30v25h-30z"/><path d="M684 177h16v10h-16z" fill="#f6d99e" fill-opacity=".5"/>
+          <path d="M680 194h25l20 172h-66z" fill="url(#tower-stone)" fill-opacity=".18"/>
+          <path d="M651 367h65M644 377h79"/>
+          <path d="M183 144a165 165 0 0 1 89-63"/><path d="M170 156a183 183 0 0 1 99-73"/>
+        </g>
+        <g fill="#f7d999">
+          <circle cx="688" cy="203" r="3"/><circle cx="172" cy="285" r="1.4" opacity=".55"/>
+          <circle cx="454" cy="112" r="1.6" opacity=".65"/><circle cx="535" cy="162" r="1.2" opacity=".55"/>
+          <circle cx="330" cy="236" r="1" opacity=".5"/><circle cx="802" cy="272" r="1.5" opacity=".6"/>
+        </g>
+      </svg>
+      <div class="gesture-camera" id="gesture-camera">
+        <video id="gesture-video" autoplay playsinline muted aria-label="你的实时镜像手势画面"></video>
+        <canvas id="gesture-canvas" aria-hidden="true"></canvas>
+        <span class="gesture-camera-caption" id="gesture-camera-label">实时镜像 · 手势取景</span>
+        <span class="gesture-camera-label" id="gesture-label">请在画面中举起手掌</span>
+      </div>
+      <div class="orb-wrap" aria-hidden="true">
+        <div class="orbit"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
+        <div class="core"><span class="core-symbol" id="core-symbol">✧</span></div>
+      </div>
+      <h2 class="stage-title" id="stage-title">静候一签</h2>
+      <p class="stage-copy" id="stage-copy">心有所愿，静心片刻。<br>可点击求签，也可开启手势互动。</p>
+      <p class="stage-hint" id="stage-hint">心诚自省 · 平安随行</p>
+      <div class="results" id="results">
+        <div class="result-caption"><span>海上明灯 · 原创灵签</span><strong id="reading-code">第 001 签</strong></div>
+        <div class="cards" id="cards"></div>
+        <p class="results-question" id="results-question"></p>
+      </div>
+    </section>
+    <aside class="panel side" aria-labelledby="history-title">
+      <div class="panel-heading"><h2 class="panel-title" id="history-title">求签记录</h2><span class="count-pill" id="draw-count">0 次</span></div>
+      <div class="history-list" id="history-list"><div class="history-empty">尚未求签<br>静心许愿，开启第一支灵签。</div></div>
+      <hr class="divider">
+      <div class="stats-label"><span>今日祈愿值</span><strong id="intuition">0 福</strong></div>
+      <div class="meter" aria-label="今日祈愿进度"><div class="meter-fill" id="meter-fill"></div></div>
+      <div class="stats-foot" id="stats-foot">每次静心求签，为今日祈愿添一分心意。</div>
+      <p class="side-note">✧ &nbsp;妈祖信仰主题的原创互动文案，<br>&nbsp;&nbsp;&nbsp;&nbsp;并非妈祖降示或真实庙宇签诗。</p>
+    </aside>
+  </section>
+  <footer class="bottomline"><span>海上明灯 · 妈祖文化主题互动体验</span><span>原创数字签文 · 不替代真实信仰与个人判断</span></footer>
+</main>
+<script>
+(() => {
+  const fortunes = [
+    {name:"顺风",symbol:"☼",grade:"大吉",message:"风正帆悬，宜把握眼前良机；行路顺遂，也记得感念同行之人。",advice:"定下方向，踏实启程。"},
+    {name:"安澜",symbol:"≈",grade:"中吉",message:"潮平岸阔，眼下适合稳步推进；不急不躁，自见进展。",advice:"一步一脚印，平安即是福。"},
+    {name:"静海",symbol:"☾",grade:"小吉",message:"海面微澜，先安顿心绪，再看清真正想去的方向。",advice:"缓一缓，听听内心。"},
+    {name:"守望",symbol:"✧",grade:"中吉",message:"灯火在望，遇到难处时，记得向信任的人求助，也照看好自己。",advice:"彼此扶持，不必独行。"},
+    {name:"归舟",symbol:"⌂",grade:"小吉",message:"归途有岸，忙碌之余也别忘了问候家人、珍惜身边人。",advice:"平安归来，就是好消息。"},
+    {name:"同心",symbol:"∞",grade:"中吉",message:"同舟共济，各有所得；坦诚商量，比独自猜测更能化解心结。",advice:"先倾听，再表达。"},
+    {name:"迎曦",symbol:"✦",grade:"大吉",message:"云开见日，新的机会正在显现；带着准备迎上去吧。",advice:"机会来时，勇敢回应。"},
+    {name:"惜福",symbol:"✿",grade:"小吉",message:"寻常日子亦有好风景；留意眼前的小确幸，它们值得珍惜。",advice:"把感激说给重要的人听。"},
+    {name:"明灯",symbol:"✧",grade:"大吉",message:"心有明灯，远路也能走稳。你已有力量，不妨信任自己的判断。",advice:"看准目标，从容前行。"},
+    {name:"候潮",symbol:"⌁",grade:"平签",message:"潮来潮往皆有时，暂时未明朗的事，不妨再多收集些信息。",advice:"耐心准备，不必仓促。"},
+    {name:"解缆",symbol:"⟡",grade:"中吉",message:"旧结渐松，愿意迈出小小一步，事情就会开始有转机。",advice:"先做一件能做到的小事。"},
+    {name:"惜航",symbol:"◇",grade:"平签",message:"远行先看天气，重要的决定再多想一晚，也是一种稳妥。",advice:"照顾好自己，再作打算。"}
+  ];
+  const positions = ["前缘","此刻","祈愿"];
+  const $ = id => document.getElementById(id);
+  let deck = [], selectedCount = 1, drawNumber = 0, xp = 0, soundEnabled = false, audioContext;
+  let cameraStream, handModel, gestureFrame, gestureFramePending = false, openPalmSince = 0, lastGestureDraw = 0, gestureSession = 0;
+  const shuffle = items => {
+    const copy = items.slice();
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  };
+  const updateDeck = () => { $("deck-status").textContent = `签筒 ${deck.length} / ${fortunes.length}`; };
+  const setGestureStatus = (text, state = "idle") => {
+    $("gesture-status").textContent = text;
+    $("gesture-status").dataset.state = state;
+    if (state !== "error") $("gesture-status").removeAttribute("title");
+  };
+  const loadHandModel = () => new Promise((resolve, reject) => {
+    if (window.Hands) {
+      resolve();
+      return;
+    }
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/hands.min.js";
+    script.onload = () => window.Hands ? resolve() : reject(new Error("手势识别模型未能初始化，请稍后重试。"));
+    script.onerror = () => reject(new Error("手势模型加载失败，请检查网络后重试。"));
+    document.head.append(script);
+  });
+  const drawHandLandmarks = landmarks => {
+    const canvas = $("gesture-canvas");
+    const video = $("gesture-video");
+    const width = canvas.width = video.videoWidth;
+    const height = canvas.height = video.videoHeight;
+    const context = canvas.getContext("2d");
+    context.clearRect(0, 0, width, height);
+    const connections = [[0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],[5,9],[9,10],[10,11],[11,12],[9,13],[13,14],[14,15],[15,16],[13,17],[17,18],[18,19],[19,20],[0,17]];
+    context.lineWidth = Math.max(2, width / 220);
+    context.strokeStyle = "#65f5e2";
+    connections.forEach(([from, to]) => {
+      context.beginPath();
+      context.moveTo(landmarks[from].x * width, landmarks[from].y * height);
+      context.lineTo(landmarks[to].x * width, landmarks[to].y * height);
+      context.stroke();
+    });
+    landmarks.forEach(point => {
+      context.beginPath();
+      context.arc(point.x * width, point.y * height, Math.max(2, width / 150), 0, Math.PI * 2);
+      context.fillStyle = "#ff66b3";
+      context.fill();
+    });
+  };
+  const updateGesture = results => {
+    const hands = results.multiHandLandmarks || [];
+    const meter = $("gesture-meter");
+    if (!hands.length) {
+      openPalmSince = 0;
+      $("gesture-label").textContent = "请在画面中举起手掌";
+      const canvas = $("gesture-canvas");
+      canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+      meter.style.width = "0";
+      meter.classList.remove("armed");
+      setGestureStatus("等待手掌", "active");
+      return;
+    }
+    const landmarks = hands[0];
+    drawHandLandmarks(landmarks);
+    const fingerTips = [8, 12, 16, 20];
+    const fingerPips = [6, 10, 14, 18];
+    const extendedCount = fingerTips.reduce((count, tip, index) =>
+      count + (landmarks[tip].y < landmarks[fingerPips[index]].y ? 1 : 0), 0);
+    const thumbOpen = Math.hypot(landmarks[4].x - landmarks[5].x, landmarks[4].y - landmarks[5].y) > .12;
+    if (extendedCount >= 4 && thumbOpen) {
+      const now = performance.now();
+      if (!openPalmSince) openPalmSince = now;
+      const progress = Math.min(100, ((now - openPalmSince) / 1100) * 100);
+      meter.classList.add("armed");
+      meter.style.width = `${progress}%`;
+      $("gesture-label").textContent = progress >= 100 ? "正在为你取签" : "保持张开手掌";
+      setGestureStatus(progress >= 100 ? "识别到张开手掌" : "保持张开手掌…", "active");
+      if (progress >= 100 && now - lastGestureDraw > 2400 && !$("draw").disabled) {
+        lastGestureDraw = now;
+        openPalmSince = 0;
+        meter.style.width = "0";
+        draw();
+      }
+    } else {
+      openPalmSince = 0;
+      meter.style.width = "0";
+      meter.classList.remove("armed");
+      $("gesture-label").textContent = "请张开手掌";
+      setGestureStatus("已识别手部", "active");
+    }
+  };
+  const stopGestureRecognition = () => {
+    gestureSession++;
+    if (gestureFrame) cancelAnimationFrame(gestureFrame);
+    gestureFrame = undefined;
+    if (handModel) {
+      handModel.close();
+      handModel = undefined;
+    }
+    if (cameraStream) {
+      cameraStream.getTracks().forEach(track => track.stop());
+      cameraStream = undefined;
+    }
+    $("gesture-video").srcObject = null;
+    $("gesture-camera").classList.remove("visible");
+    $("stage").classList.remove("camera-on");
+    $("gesture-start").hidden = false;
+    $("gesture-start").disabled = false;
+    $("gesture-stop").hidden = true;
+    $("gesture-meter").style.width = "0";
+    $("gesture-label").textContent = "请在画面中举起手掌";
+    $("gesture-camera-label").textContent = "实时镜像 · 手势取景";
+    setGestureStatus("未连接");
+  };
+  const processGestureFrame = async () => {
+    if (!cameraStream || !handModel) return;
+    const session = gestureSession;
+    const video = $("gesture-video");
+    if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA && !gestureFramePending) {
+      gestureFramePending = true;
+      try {
+        await handModel.send({image: video});
+      } catch (error) {
+        if (session !== gestureSession) return;
+        console.error("手势识别帧处理失败：", error);
+        const failedModel = handModel;
+        handModel = undefined;
+        if (failedModel) failedModel.close();
+        $("gesture-label").textContent = "画面正常 · 手势识别中断";
+        $("gesture-status").title = error.message || String(error);
+        setGestureStatus("画面正常，识别中断", "error");
+        return;
+      } finally {
+        gestureFramePending = false;
+      }
+    }
+    if (session === gestureSession && cameraStream && handModel) gestureFrame = requestAnimationFrame(processGestureFrame);
+  };
+  const startGestureRecognition = async () => {
+    const startButton = $("gesture-start");
+    const session = ++gestureSession;
+    startButton.disabled = true;
+    setGestureStatus("正在初始化…");
+    try {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        throw new Error("当前环境无法访问摄像头，请通过 HTTPS 或 localhost 打开页面。");
+      }
+      const stream = await navigator.mediaDevices.getUserMedia({video: {facingMode: "user"}, audio: false});
+      if (session !== gestureSession) {
+        stream.getTracks().forEach(track => track.stop());
+        return;
+      }
+      cameraStream = stream;
+      const video = $("gesture-video");
+      video.srcObject = cameraStream;
+      await video.play();
+      if (session !== gestureSession) return;
+      $("gesture-camera").classList.add("visible");
+      $("stage").classList.add("camera-on");
+      $("gesture-start").hidden = true;
+      $("gesture-stop").hidden = false;
+      $("gesture-label").textContent = "实时画面已开启";
+      $("gesture-camera-label").textContent = "正在载入手势识别…";
+      setGestureStatus("画面已开启，正在加载识别…", "active");
+      await loadHandModel();
+      if (session !== gestureSession) return;
+      handModel = new window.Hands({locateFile: file =>
+        `https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/${file}`});
+      handModel.setOptions({maxNumHands: 1, modelComplexity: 0, minDetectionConfidence: .65, minTrackingConfidence: .55});
+      handModel.onResults(updateGesture);
+      $("gesture-camera-label").textContent = "实时镜像 · 手势取景";
+      setGestureStatus("摄像头已连接", "active");
+      processGestureFrame();
+    } catch (error) {
+      if (session !== gestureSession) return;
+      console.error("开启手势识别失败：", error);
+      if (cameraStream) {
+        $("gesture-start").disabled = false;
+        $("gesture-camera-label").textContent = "实时画面正常";
+        $("gesture-label").textContent = "画面正常 · 识别模型未就绪";
+        $("gesture-status").title = error.message || String(error);
+        setGestureStatus("画面正常，识别模型未就绪", "error");
+      } else {
+        stopGestureRecognition();
+        $("gesture-status").title = error.message || String(error);
+        setGestureStatus(error.message || "摄像头启动失败", "error");
+      }
+    }
+  };
+  const playTone = () => {
+    if (!soundEnabled) return;
+    audioContext = audioContext || new (window.AudioContext || window.webkitAudioContext)();
+    if (audioContext.state === "suspended") audioContext.resume();
+    const now = audioContext.currentTime;
+    [523.25, 783.99].forEach((frequency, index) => {
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      oscillator.type = "sine";
+      oscillator.frequency.setValueAtTime(frequency, now + index * .12);
+      gain.gain.setValueAtTime(.0001, now + index * .12);
+      gain.gain.exponentialRampToValueAtTime(.12, now + index * .12 + .025);
+      gain.gain.exponentialRampToValueAtTime(.0001, now + index * .12 + .38);
+      oscillator.connect(gain).connect(audioContext.destination);
+      oscillator.start(now + index * .12);
+      oscillator.stop(now + index * .12 + .4);
+    });
+  };
+  const makeCard = (fortune, index) => {
+    const card = document.createElement("article");
+    card.className = "fortune-card";
+    card.dataset.grade = fortune.grade;
+    card.style.animationDelay = `${index * 100}ms`;
+    const top = document.createElement("div");
+    top.className = "card-top";
+    const number = document.createElement("span");
+    number.textContent = `妈祖灵签 · ${String(fortunes.indexOf(fortune) + 1).padStart(2, "0")}`;
+    const rarity = document.createElement("span");
+    rarity.className = "rarity";
+    rarity.textContent = fortune.grade;
+    top.append(number, rarity);
+    const sigil = document.createElement("div");
+    sigil.className = "card-sigil";
+    sigil.setAttribute("aria-hidden", "true");
+    sigil.textContent = fortune.symbol;
+    const name = document.createElement("h3");
+    name.className = "card-name";
+    name.textContent = fortune.name;
+    if (selectedCount === 3) {
+      const position = document.createElement("div");
+      position.className = "mini-code";
+      position.style.marginTop = "5px";
+      position.style.textAlign = "center";
+      position.textContent = positions[index];
+      card.append(top, sigil, name, position);
+    } else {
+      card.append(top, sigil, name);
+    }
+    const message = document.createElement("p");
+    message.className = "card-message";
+    message.textContent = fortune.message;
+    const advice = document.createElement("div");
+    advice.className = "card-advice";
+    const label = document.createElement("b");
+    label.textContent = "祈愿指引 · ";
+    advice.append(label, document.createTextNode(fortune.advice));
+    card.append(message, advice);
+    return card;
+  };
+  const addHistory = (fortune, time) => {
+    const empty = $("history-list").querySelector(".history-empty");
+    if (empty) empty.remove();
+    const item = document.createElement("div");
+    item.className = "history-item";
+    const sigil = document.createElement("div");
+    sigil.className = "history-sigil";
+    sigil.setAttribute("aria-hidden", "true");
+    sigil.textContent = fortune.symbol;
+    const copy = document.createElement("div");
+    copy.className = "history-copy";
+    const name = document.createElement("div");
+    name.className = "history-name";
+    name.textContent = fortune.name;
+    const meta = document.createElement("div");
+    meta.className = "history-meta";
+    meta.textContent = `${fortune.grade} · ${time}`;
+    copy.append(name, meta);
+    item.append(sigil, copy);
+    $("history-list").prepend(item);
+    while ($("history-list").children.length > 6) $("history-list").lastElementChild.remove();
+  };
+  const draw = () => {
+    if (deck.length < selectedCount) {
+      const remaining = deck.slice();
+      deck = shuffle(fortunes.filter(fortune => !remaining.includes(fortune))).concat(remaining);
+    }
+    const selection = deck.splice(0, selectedCount);
+    updateDeck();
+    $("draw").disabled = true;
+    $("reset").disabled = true;
+    document.querySelectorAll(".mode").forEach(mode => { mode.disabled = true; });
+    $("draw").querySelector("span:last-child").textContent = "正在为你取签…";
+    $("stage").classList.add("is-drawing");
+    $("results").classList.remove("visible");
+    $("stage-title").textContent = "诚心取签";
+    $("stage-copy").textContent = "一念祈愿，稍候片刻。";
+    $("stage-hint").textContent = "敬天惜福 · 静候签文";
+    $("core-symbol").textContent = "✧";
+    playTone();
+    window.setTimeout(() => {
+      $("stage").classList.remove("is-drawing");
+      $("stage-title").textContent = `${selection[0].grade} · 签文已至`;
+      $("stage-copy").textContent = selectedCount === 3 ? "前缘、此刻与祈愿，请细细参详。" : "愿此签伴你心安，前路从容。";
+      $("stage-hint").textContent = "原创互动签文 · 平安随行";
+      $("core-symbol").textContent = selection[0].symbol;
+      $("cards").replaceChildren(...selection.map(makeCard));
+      $("cards").classList.toggle("multi", selectedCount === 3);
+      drawNumber++;
+      $("reading-code").textContent = `第 ${String(drawNumber).padStart(3, "0")} 签`;
+      const question = $("question").value.trim();
+      $("results-question").replaceChildren();
+      if (question) {
+        const prefix = document.createElement("span");
+        prefix.textContent = "为这份心愿留一念：「";
+        const text = document.createElement("strong");
+        text.textContent = question;
+        $("results-question").append(prefix, text, document.createTextNode("」"));
+      }
+      $("results").classList.add("visible");
+      $("history-title").setAttribute("aria-label", "求签记录");
+      const time = new Intl.DateTimeFormat("zh-CN", {hour:"2-digit",minute:"2-digit"}).format(new Date());
+      selection.forEach(fortune => addHistory(fortune, time));
+      xp = Math.min(100, xp + selection.length * 12);
+      $("draw-count").textContent = `${drawNumber} 次`;
+      $("intuition").textContent = `${xp} 福`;
+      $("meter-fill").style.width = `${xp}%`;
+      $("stats-foot").textContent = xp >= 100 ? "愿你照顾好自己，也珍惜身边的人。" : `每次静心求签，灵感值 +${selection.length * 12}。`;
+      $("draw").disabled = false;
+      $("reset").disabled = false;
+      document.querySelectorAll(".mode").forEach(mode => { mode.disabled = false; });
+      $("draw").querySelector("span:last-child").textContent = "再求一签";
+      $("draw").focus();
+    }, 1150);
+  };
+  document.querySelectorAll(".mode").forEach(button => button.addEventListener("click", () => {
+    selectedCount = Number(button.dataset.count);
+    document.querySelectorAll(".mode").forEach(mode => mode.setAttribute("aria-pressed", String(mode === button)));
+  }));
+  $("draw").addEventListener("click", draw);
+  $("lantern-toggle").addEventListener("click", () => {
+    const lit = $("lantern-toggle").getAttribute("aria-pressed") !== "true";
+    $("lantern-toggle").setAttribute("aria-pressed", String(lit));
+    $("lantern-toggle").setAttribute("aria-label", lit ? "熄灭祈愿心灯" : "点亮祈愿心灯");
+    $("lantern-state").textContent = lit ? "心灯已亮 · WISH LIGHT ON" : "点亮心灯 · TOUCH TO GLOW";
+    $("stage").classList.toggle("lantern-lit", lit);
+  });
+  $("gesture-start").addEventListener("click", startGestureRecognition);
+  $("gesture-stop").addEventListener("click", stopGestureRecognition);
+  $("sound").addEventListener("click", () => {
+    soundEnabled = !soundEnabled;
+    $("sound").setAttribute("aria-pressed", String(soundEnabled));
+    $("sound").textContent = soundEnabled ? "♫ 音效：开" : "♫ 音效：关";
+  });
+  $("reset").addEventListener("click", () => {
+    deck = shuffle(fortunes);
+    drawNumber = 0;
+    xp = 0;
+    $("history-list").replaceChildren();
+    const empty = document.createElement("div");
+    empty.className = "history-empty";
+    empty.append("尚未求签", document.createElement("br"), "静心许愿，开启第一支灵签。");
+    $("history-list").append(empty);
+    $("draw-count").textContent = "0 次";
+    $("intuition").textContent = "0 福";
+    $("meter-fill").style.width = "0";
+    $("stats-foot").textContent = "每次静心求签，为今日祈愿添一分心意。";
+    $("cards").replaceChildren();
+    $("results").classList.remove("visible");
+    $("stage-title").textContent = "静候一签";
+    $("stage-copy").innerHTML = "心有所愿，静心片刻。<br>可点击求签，也可开启手势互动。";
+    $("stage-hint").textContent = "心诚自省 · 平安随行";
+    $("core-symbol").textContent = "✧";
+    $("draw").querySelector("span:last-child").textContent = "摇一支灵签";
+    updateDeck();
+  });
+  window.addEventListener("pagehide", stopGestureRecognition);
+  deck = shuffle(fortunes);
+  updateDeck();
+})();
+</script>
+</body>
+</html>
